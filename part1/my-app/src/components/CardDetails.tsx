@@ -1,4 +1,11 @@
+import {useParams} from 'react-router-dom';
+import { useState } from 'react';
+import axios from "axios";
 function CardDetails() {
+  const [data,SetData]=useState([]);
+  let id=useParams()
+  axios.get(`http://localhost:8080/products/${id}`).then(res=>SetData(res.data));
+  console.log(data);
   return (
     <div className="product">
       <span>
